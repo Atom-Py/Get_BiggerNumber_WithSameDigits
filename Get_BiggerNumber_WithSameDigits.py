@@ -14,7 +14,7 @@ def get_next(number):
                 if end_position - start_position > 2:
                     flag = False
                     continue
-                return int(''.join(lst_digit))
+                yield int(''.join(lst_digit))
             else:
                 start_position -= 1
         else:
@@ -24,15 +24,15 @@ def get_next(number):
                 index = start_position + lst_digit[start_position:end_position].index(min(smaller_digit))
                 lst_digit[start_position], lst_digit[index] = lst_digit[index], lst_digit[start_position]
             if end_position - start_position == 2:
-                #flag = True #only for list return
-                return int(''.join(lst_digit))
-    return None
+                flag = True
+                yield int(''.join(lst_digit))
 
 if __name__ == '__main__':
 
     n = 125467864325457257957924581757579354792357457957943557
+    gen = get_next(n)
 
     t1 = datetime.now()
     for i in range(1000000):
-        n = get_next(n)
+        next(gen)
     print(datetime.now() - t1)
