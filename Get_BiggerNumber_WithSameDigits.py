@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 def get_next(number):
     lst_digit = list(str(number))
     flag = True
@@ -27,6 +28,7 @@ def get_next(number):
                 flag = True
                 yield int(''.join(lst_digit))
 
+                
 if __name__ == '__main__':
 
     n = 125467864325457257957924581757579354792357457957943557
